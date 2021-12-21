@@ -31,9 +31,7 @@ function saveEntry(event) {
   data.nextEntryId++;
   data.entries.unshift(entry);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $title.value = '';
-  $photoUrl.value = '';
-  $notes.value = '';
+  $form.reset();
 }
 
 function saveDataB4Unload(event) {
