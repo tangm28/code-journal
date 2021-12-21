@@ -1,0 +1,55 @@
+body {
+  background-color: #f0f0f0;
+}
+
+header {
+  background-color: rgb(0, 129, 0);
+  color: white;
+  line-height: 2;
+  font-size: x-large;
+}
+
+h4 {
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  border: 2px solid #b6b6b6;
+  border-radius: 0.25rem;
+  line-height: 2.3;
+}
+
+textarea {
+  resize: none;
+  line-height: 1.75;
+}
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  border: 2px solid rgb(0, 129, 0);
+}
+
+.save-container {
+  margin-top: 1rem;
+}
+
+.save-button {
+  width: 75px;
+  line-height: 2rem;
+  color: white;
+  background-color: rgb(0, 129, 0);
+  font-size: medium;
+  border-radius: 0.25rem;
+  border: 0;
+  box-shadow: 0 3px black;
+}
+
+.save-button:active {
+  box-shadow: 0 1px black;
+}
+
+.justify-right {
+  justify-content: flex-end;
+}

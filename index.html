@@ -14,10 +14,32 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body >
+  <header >
+    <div class="container">
+      <span>Code Journal</span>
+    </div>
   </header>
   <main>
+    <div class="container">
+      <form data-view="entry-form">
+        <h1>New Entry</h1>
+        <div class="row">
+          <img src="images/placeholder-image-square.jpg" alt="No image" class="photo column-half">
+          <div class="column-half">
+            <h4>Title</h4>
+            <input type="text" class="title column-full" required>
+            <h4>Photo URL</h4>
+            <input type="text" class="photo-url column-full" required>
+          </div>
+        </div>
+        <h4>Notes</h4>
+        <textarea cols="36" rows="6" class="notes column-full"></textarea>
+        <div class="row save-container justify-right">
+          <input type="submit" value="SAVE" class="save-button">
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
