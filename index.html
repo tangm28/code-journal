@@ -16,12 +16,13 @@
 </head>
 <body >
   <header >
-    <div class="container">
+    <div class="row container align-baseline">
       <span>Code Journal</span>
+      <nav><a href="#entries">Entries</a></nav>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container hidden">
+    <div data-view="entry-form" class="container">
       <h2>New Entry</h2>
       <form>
         <div class="row">
@@ -41,7 +42,7 @@
       </form>
     </div>
     <div data-view="entry-form" class="container">
-      <div class="row justify-between align-center">
+      <div id="entries" class="row justify-between align-center">
         <h2>Entries</h2>
         <div class="">
           <input type="button" value="NEW" class="save-button">
