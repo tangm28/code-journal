@@ -22,6 +22,8 @@ function saveEntry(event) {
   data.entries.unshift(entry);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  renderEntry(data.entries[0]);
+  $listOfEntries.prepend($listOfEntries.lastChild);
 }
 
 function renderEntry(entry) {
