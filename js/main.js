@@ -76,6 +76,27 @@ function goToNewEntry(event) {
   $entriesPage.setAttribute('class', 'container entries-page hidden');
 }
 
+function goToEdit(event) {
+  if (event.target.getAttribute('class') === 'fas fa-pen') {
+    // console.log(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
+    var idOfEdit = JSON.parse(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].nextEntryId === idOfEdit) {
+        data.editing = data.entries[i];
+        // console.log(data.editing);
+        goToNewEntry();
+        // $photo.setAttribute('src', data.entries[i].photoUrl);
+        // $photo.setAttribute('alt', 'Photo of ' + data.entries[i].title);
+        // $title.value = data.entries[i].title;
+        // $photoUrl.value = data.entries[i].photoUrl;
+        // $notes.value = data.entries[i].notes;
+      }
+    }
+    // console.log(data.entries[])
+    // $title.value = 'hello';
+  }
+}
+
 $photoUrl.addEventListener('input', uploadPhoto);
 $form.addEventListener('submit', saveEntry);
 
@@ -87,4 +108,5 @@ if (data.entries < 1) {
 
 $navEntries.addEventListener('click', goToEntries);
 $newButton.addEventListener('click', goToNewEntry);
+$listOfEntries.addEventListener('click', goToEdit);
 /* exported data */
