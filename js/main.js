@@ -45,11 +45,17 @@ function renderEntry(entry) {
   var divColumnHalf = document.createElement('div');
   divColumnHalf.setAttribute('class', 'column-half');
   liRow.appendChild(divColumnHalf);
+  var divTitleEdit = document.createElement('div');
+  divTitleEdit.setAttribute('class', 'row align-baseline justify-between');
+  divColumnHalf.appendChild(divTitleEdit);
   var h2Title = document.createElement('h2');
   h2Title.textContent = entry.title;
+  var iconEdit = document.createElement('i');
+  iconEdit.setAttribute('class', 'fas fa-pen');
+  divTitleEdit.appendChild(h2Title);
+  divTitleEdit.appendChild(iconEdit);
   var pEntries = document.createElement('p');
   pEntries.textContent = entry.notes;
-  divColumnHalf.appendChild(h2Title);
   divColumnHalf.appendChild(pEntries);
 }
 
