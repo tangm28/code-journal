@@ -1,4 +1,6 @@
 /* global data */
+var $newEntry = document.querySelector('.new-entry');
+var $entriesPage = document.querySelector('.entries-page');
 var $title = document.querySelector('.title');
 var $photo = document.querySelector('.photo');
 var $photoUrl = document.querySelector('.photo-url');
@@ -25,6 +27,8 @@ function saveEntry(event) {
   renderEntry(data.entries[0]);
   $listOfEntries.prepend($listOfEntries.lastChild);
   $noEntries.setAttribute('class', 'row no-entries justify-center hidden');
+  $newEntry.setAttribute('class', 'container new-entry hidden');
+  $entriesPage.setAttribute('class', 'container entries-page');
 }
 
 function renderEntry(entry) {
