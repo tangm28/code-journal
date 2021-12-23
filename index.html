@@ -16,14 +16,15 @@
 </head>
 <body >
   <header >
-    <div class="container">
+    <div class="row container align-baseline">
       <span>Code Journal</span>
+      <nav><a href="#entries">Entries</a></nav>
     </div>
   </header>
   <main>
-    <div class="container">
-      <form data-view="entry-form">
-        <h1>New Entry</h1>
+    <div data-view="entry-form" class="container new-entry">
+      <h2>New Entry</h2>
+      <form>
         <div class="row">
           <img src="images/placeholder-image-square.jpg" alt="No image" class="photo column-half">
           <div class="column-half">
@@ -39,6 +40,17 @@
           <input type="submit" value="SAVE" class="save-button">
         </div>
       </form>
+    </div>
+    <div data-view="entry-form" class="container entries-page hidden">
+      <div id="entries" class="row justify-between align-center">
+        <h2>Entries</h2>
+        <div>
+          <input type="button" value="NEW" class="save-button">
+        </div>
+      </div>
+      <p class="row no-entries justify-center hidden">No entries have been recorded.</p>
+      <ul style="list-style-type:none;" class="list-of-entries">
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>
