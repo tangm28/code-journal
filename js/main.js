@@ -8,6 +8,8 @@ var $notes = document.querySelector('.notes');
 var $form = document.querySelector('form');
 var $listOfEntries = document.querySelector('.list-of-entries');
 var $noEntries = document.querySelector('.no-entries');
+var $navEntries = document.querySelector('.nav-entries');
+var $newButton = document.querySelector('.new-button');
 
 function uploadPhoto(event) {
   $photo.setAttribute('src', $photoUrl.value);
@@ -28,8 +30,7 @@ function saveEntry(event) {
   renderEntry(data.entries[0]);
   $listOfEntries.prepend($listOfEntries.lastChild);
   $noEntries.setAttribute('class', 'row no-entries justify-center hidden');
-  $newEntry.setAttribute('class', 'container new-entry hidden');
-  $entriesPage.setAttribute('class', 'container entries-page');
+  goToEntries(event);
 }
 
 function renderEntry(entry) {
@@ -58,6 +59,16 @@ function createEntries(event) {
   }
 }
 
+function goToEntries(event) {
+  $newEntry.setAttribute('class', 'container new-entry hidden');
+  $entriesPage.setAttribute('class', 'container entries-page');
+}
+
+function goToNewEntry(event) {
+  $newEntry.setAttribute('class', 'container new-entry');
+  $entriesPage.setAttribute('class', 'container entries-page hidden');
+}
+
 $photoUrl.addEventListener('input', uploadPhoto);
 $form.addEventListener('submit', saveEntry);
 
@@ -66,4 +77,7 @@ if (data.entries < 1) {
 } else {
   window.addEventListener('DOMContentLoaded', createEntries(event));
 }
+
+$navEntries.addEventListener('click', goToEntries);
+$newButton.addEventListener('click', goToNewEntry);
 /* exported data */
