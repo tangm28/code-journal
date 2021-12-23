@@ -8,6 +8,7 @@ var $notes = document.querySelector('.notes');
 var $form = document.querySelector('form');
 var $listOfEntries = document.querySelector('.list-of-entries');
 var $noEntries = document.querySelector('.no-entries');
+
 function uploadPhoto(event) {
   $photo.setAttribute('src', $photoUrl.value);
 }
@@ -59,6 +60,7 @@ function createEntries(event) {
 
 $photoUrl.addEventListener('input', uploadPhoto);
 $form.addEventListener('submit', saveEntry);
+
 if (data.entries < 1) {
   $noEntries.setAttribute('class', 'row no-entries justify-center');
 } else {
