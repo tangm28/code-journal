@@ -36,6 +36,7 @@ function saveEntry(event) {
 function renderEntry(entry) {
   var liRow = document.createElement('li');
   liRow.setAttribute('class', 'row');
+  liRow.setAttribute('data-entry-id', entry.nextEntryId);
   $listOfEntries.appendChild(liRow);
   var imgPhotoColumnHalf = document.createElement('img');
   imgPhotoColumnHalf.setAttribute('src', entry.photoUrl);
