@@ -24,6 +24,7 @@ function saveEntry(event) {
   $form.reset();
   renderEntry(data.entries[0]);
   $listOfEntries.prepend($listOfEntries.lastChild);
+  $noEntries.setAttribute('class', 'row no-entries justify-center hidden');
 }
 
 function renderEntry(entry) {
