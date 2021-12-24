@@ -17,6 +17,19 @@ function uploadPhoto(event) {
 
 function saveEntry(event) {
   event.preventDefault();
+  if (data.editing !== null) {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].nextEntryId === data.editing.nextEntryId) {
+        data.entries.splice(i, 1);
+        var $hideEntry = $listOfEntries.querySelectorAll('li');
+        for (var j = 0; j < $hideEntry.length; j++) {
+          if (JSON.parse($hideEntry[j].getAttribute('data-entry-id')) === data.editing.nextEntryId) {
+            $hideEntry[j].setAttribute('class', 'hidden');
+          }
+        }
+      }
+    }
+  }
   var entry = {
     title: $title.value,
     photoUrl: $photoUrl.value,
@@ -74,24 +87,27 @@ function goToEntries(event) {
 function goToNewEntry(event) {
   $newEntry.setAttribute('class', 'container new-entry');
   $entriesPage.setAttribute('class', 'container entries-page hidden');
+  $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
+  data.editing = null;
 }
 
 function goToEdit(event) {
   if (event.target.getAttribute('class') === 'fas fa-pen') {
     // console.log(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
+
+    goToNewEntry();
     var idOfEdit = JSON.parse(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].nextEntryId === idOfEdit) {
         data.editing = data.entries[i];
-        // console.log(data.editing);
-        goToNewEntry();
-        // $photo.setAttribute('src', data.entries[i].photoUrl);
-        // $photo.setAttribute('alt', 'Photo of ' + data.entries[i].title);
-        // $title.value = data.entries[i].title;
-        // $photoUrl.value = data.entries[i].photoUrl;
-        // $notes.value = data.entries[i].notes;
       }
     }
+    $photo.setAttribute('src', data.editing.photoUrl);
+    $photo.setAttribute('alt', 'Photo of ' + data.editing.title);
+    $title.value = data.editing.title;
+    $photoUrl.value = data.editing.photoUrl;
+    $notes.value = data.editing.notes;
     // console.log(data.entries[])
     // $title.value = 'hello';
   }
