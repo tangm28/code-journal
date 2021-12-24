@@ -10,6 +10,7 @@ var $listOfEntries = document.querySelector('.list-of-entries');
 var $noEntries = document.querySelector('.no-entries');
 var $navEntries = document.querySelector('.nav-entries');
 var $newButton = document.querySelector('.new-button');
+var $entryTitle = document.querySelector('.entry-title');
 
 function uploadPhoto(event) {
   $photo.setAttribute('src', $photoUrl.value);
@@ -85,6 +86,7 @@ function goToEntries(event) {
 }
 
 function goToNewEntry(event) {
+  $entryTitle.textContent = 'New Entry';
   $newEntry.setAttribute('class', 'container new-entry');
   $entriesPage.setAttribute('class', 'container entries-page hidden');
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -94,9 +96,8 @@ function goToNewEntry(event) {
 
 function goToEdit(event) {
   if (event.target.getAttribute('class') === 'fas fa-pen') {
-    // console.log(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
-
     goToNewEntry();
+    $entryTitle.textContent = 'Edit Entry';
     var idOfEdit = JSON.parse(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].nextEntryId === idOfEdit) {
@@ -108,8 +109,6 @@ function goToEdit(event) {
     $title.value = data.editing.title;
     $photoUrl.value = data.editing.photoUrl;
     $notes.value = data.editing.notes;
-    // console.log(data.entries[])
-    // $title.value = 'hello';
   }
 }
 
