@@ -18,12 +18,12 @@
   <header >
     <div class="row container align-baseline">
       <span>Code Journal</span>
-      <nav><a href="#entries">Entries</a></nav>
+      <nav><a href="" class="nav-entries">Entries</a></nav>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container new-entry">
-      <h2>New Entry</h2>
+    <div data-view="entry-form" class="container new-entry hidden">
+      <h2 class="entry-title">New Entry</h2>
       <form>
         <div class="row">
           <img src="images/placeholder-image-square.jpg" alt="No image" class="photo column-half">
@@ -41,10 +41,10 @@
         </div>
       </form>
     </div>
-    <div data-view="entry-form" class="container entries-page hidden">
+    <div data-view="entry-form" class="container entries-page">
       <div id="entries" class="row justify-between align-center">
         <h2>Entries</h2>
-        <div>
+        <div class="new-button">
           <input type="button" value="NEW" class="save-button">
         </div>
       </div>
