@@ -11,6 +11,10 @@ var $noEntries = document.querySelector('.no-entries');
 var $navEntries = document.querySelector('.nav-entries');
 var $newButton = document.querySelector('.new-button');
 var $entryTitle = document.querySelector('.entry-title');
+var $deleteNav = document.querySelector('.delete-nav');
+var $modalContainer = document.querySelector('.modal-container');
+var $cancelButton = document.querySelector('.cancel-button');
+var $saveContainer = document.querySelector('.save-container');
 
 function uploadPhoto(event) {
   $photo.setAttribute('src', $photoUrl.value);
@@ -86,6 +90,8 @@ function goToEdit(event) {
   if (event.target.getAttribute('class') === 'fas fa-pen') {
     goToNewEntry();
     $entryTitle.textContent = 'Edit Entry';
+    $deleteNav.setAttribute('class', 'delete-nav');
+    $saveContainer.setAttribute('class', 'row save-container justify-between align-baseline');
     var idOfEdit = JSON.parse(event.target.closest('li').getAttribute('data-entry-id'));
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].nextEntryId === idOfEdit) {
@@ -116,6 +122,14 @@ function deleteEntry(event) {
   }
 }
 
+function openDeleteModal(event) {
+  $modalContainer.style.display = 'block';
+}
+
+function closeDeleteModal(event) {
+  $modalContainer.style.display = 'none';
+}
+
 $photoUrl.addEventListener('input', uploadPhoto);
 $form.addEventListener('submit', saveEntry);
 
@@ -128,4 +142,6 @@ if (data.entries < 1) {
 $navEntries.addEventListener('click', goToEntries);
 $newButton.addEventListener('click', goToNewEntry);
 $listOfEntries.addEventListener('click', goToEdit);
+$deleteNav.addEventListener('click', openDeleteModal);
+$cancelButton.addEventListener('click', closeDeleteModal);
 /* exported data */
