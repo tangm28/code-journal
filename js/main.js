@@ -18,19 +18,7 @@ function uploadPhoto(event) {
 
 function saveEntry(event) {
   event.preventDefault();
-  if (data.editing !== null) {
-    for (var i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].nextEntryId === data.editing.nextEntryId) {
-        data.entries.splice(i, 1);
-        var $hideEntry = $listOfEntries.querySelectorAll('li');
-        for (var j = 0; j < $hideEntry.length; j++) {
-          if (JSON.parse($hideEntry[j].getAttribute('data-entry-id')) === data.editing.nextEntryId) {
-            $hideEntry[j].setAttribute('class', 'hidden');
-          }
-        }
-      }
-    }
-  }
+  deleteEntry();
   var entry = {
     title: $title.value,
     photoUrl: $photoUrl.value,
@@ -98,7 +86,7 @@ function goToEdit(event) {
   if (event.target.getAttribute('class') === 'fas fa-pen') {
     goToNewEntry();
     $entryTitle.textContent = 'Edit Entry';
-    var idOfEdit = JSON.parse(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
+    var idOfEdit = JSON.parse(event.target.closest('li').getAttribute('data-entry-id'));
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].nextEntryId === idOfEdit) {
         data.editing = data.entries[i];
@@ -109,6 +97,22 @@ function goToEdit(event) {
     $title.value = data.editing.title;
     $photoUrl.value = data.editing.photoUrl;
     $notes.value = data.editing.notes;
+  }
+}
+
+function deleteEntry(event) {
+  if (data.editing !== null) {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].nextEntryId === data.editing.nextEntryId) {
+        data.entries.splice(i, 1);
+        var $hideEntry = $listOfEntries.querySelectorAll('li');
+        for (var j = 0; j < $hideEntry.length; j++) {
+          if (JSON.parse($hideEntry[j].getAttribute('data-entry-id')) === data.editing.nextEntryId) {
+            $hideEntry[j].setAttribute('class', 'hidden');
+          }
+        }
+      }
+    }
   }
 }
 
