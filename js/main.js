@@ -15,6 +15,7 @@ var $deleteNav = document.querySelector('.delete-nav');
 var $modalContainer = document.querySelector('.modal-container');
 var $cancelButton = document.querySelector('.cancel-button');
 var $saveContainer = document.querySelector('.save-container');
+var $confirmButton = document.querySelector('.confirm-button');
 
 function uploadPhoto(event) {
   $photo.setAttribute('src', $photoUrl.value);
@@ -22,7 +23,6 @@ function uploadPhoto(event) {
 
 function saveEntry(event) {
   event.preventDefault();
-  deleteEntry();
   var entry = {
     title: $title.value,
     photoUrl: $photoUrl.value,
@@ -36,7 +36,7 @@ function saveEntry(event) {
   renderEntry(data.entries[0]);
   $listOfEntries.prepend($listOfEntries.lastChild);
   $noEntries.setAttribute('class', 'row no-entries justify-center hidden');
-  goToEntries(event);
+  deleteEntry();
 }
 
 function renderEntry(entry) {
@@ -75,6 +75,9 @@ function createEntries(event) {
 function goToEntries(event) {
   $newEntry.setAttribute('class', 'container new-entry hidden');
   $entriesPage.setAttribute('class', 'container entries-page');
+  if (data.entries < 1) {
+    $noEntries.setAttribute('class', 'row no-entries justify-center');
+  }
 }
 
 function goToNewEntry(event) {
@@ -120,6 +123,9 @@ function deleteEntry(event) {
       }
     }
   }
+  $modalContainer.style.display = 'none';
+  data.editing = null;
+  goToEntries();
 }
 
 function openDeleteModal(event) {
@@ -144,4 +150,5 @@ $newButton.addEventListener('click', goToNewEntry);
 $listOfEntries.addEventListener('click', goToEdit);
 $deleteNav.addEventListener('click', openDeleteModal);
 $cancelButton.addEventListener('click', closeDeleteModal);
+$confirmButton.addEventListener('click', deleteEntry);
 /* exported data */

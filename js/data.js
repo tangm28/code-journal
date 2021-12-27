@@ -17,9 +17,7 @@ function loadData(event) {
 }
 
 function saveDataB4Unload(event) {
-  if (data.entries.length > 0) {
-    localStorage.setItem('entries-local-storage', JSON.stringify(data));
-  }
+  localStorage.setItem('entries-local-storage', JSON.stringify(data));
 }
 
 window.addEventListener('load', loadData);
