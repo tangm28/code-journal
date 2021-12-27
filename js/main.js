@@ -31,8 +31,8 @@ function saveEntry(event) {
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
-  $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.reset();
+  // $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+  // $form.reset();
   renderEntry(data.entries[0]);
   $listOfEntries.prepend($listOfEntries.lastChild);
   $noEntries.setAttribute('class', 'row no-entries justify-center hidden');
